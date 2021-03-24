@@ -15,7 +15,7 @@ public class MenuItem {
      *
      * @param name Name of the item
      */
-    public MenuItem(String name){
+    public MenuItem(String name) {
         this.name = name;
         this.quantity = 0;
         this.itemPrice = 0;
@@ -24,10 +24,19 @@ public class MenuItem {
     /**
      * Setter method for item price
      *
-     * @param itemPrice Price of an item
+     * @param itemPrice Price of a menu item
      */
     public void setItemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
+    }
+
+    /**
+     * Getter method for item price
+     *
+     * @return Price of a menu item
+     */
+    public double getItemPrice() {
+        return itemPrice;
     }
 
     /**
@@ -40,9 +49,18 @@ public class MenuItem {
     }
 
     /**
+     * Getter method for quantity
+     *
+     * @return Number of an item
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
      * Method for the subclasses to implement and override for calculating item price
      */
-    public void calculateItemPrice(){
+    public void calculateItemPrice() {
         //Overriden by subclasses
     }
 }

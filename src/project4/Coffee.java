@@ -122,4 +122,44 @@ public class Coffee extends MenuItem implements Customizable {
         }
         return index;
     }
+
+    /**
+     * Prints instance of this class in the following format
+     * Coffee::quantity::size::addins
+     *
+     * @return textual representation of an instance of the coffee class
+     */
+    @Override
+    public String toString() {
+        String addins = "";
+        if (addIn[CREAM]) {
+            addins = addins + "Cream ";
+        }
+        if (addIn[SYRUP]) {
+            addins = addins + "Syrup ";
+        }
+        if (addIn[MILK]) {
+            addins = addins + "Milk ";
+        }
+        if (addIn[CARAMEL]) {
+            addins = addins + "Caramel ";
+        }
+        if (addIn[WHIPPED_CREAM]) {
+            addins = addins + "Whipped Cream ";
+        }
+        if (addins.isEmpty()) {
+            addins = addins + "None";
+        }
+        switch (size) {
+            case SHORT:
+                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Short" + "::Addins " + addins;
+            case TALL:
+                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Tall" + "::Addins " + addins;
+            case GRANDE:
+                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Grande" + "::Addins " + addins;
+            case VENTI:
+                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Venti" + "::Addins " + addins;
+        }
+        return "ERROR";
+    }
 }
