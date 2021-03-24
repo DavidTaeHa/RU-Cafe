@@ -15,9 +15,9 @@ public class MenuItem {
      *
      * @param name Name of the item
      */
-    public MenuItem(String name) {
+    public MenuItem(String name, int quantity) {
         this.name = name;
-        this.quantity = 0;
+        this.quantity = quantity;
         this.itemPrice = 0;
     }
 
@@ -40,21 +40,21 @@ public class MenuItem {
     }
 
     /**
-     * Setter method for quantity
-     *
-     * @param quantity Number of an item
-     */
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    /**
      * Getter method for quantity
      *
      * @return Number of an item
      */
     public int getQuantity() {
         return quantity;
+    }
+
+    /**
+     * Getter method for name of menu item
+     *
+     * @return name of menu item
+     */
+    public String getName() {
+        return name;
     }
 
     /**

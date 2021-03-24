@@ -31,8 +31,8 @@ public class Coffee extends MenuItem implements Customizable {
     final static int NUM_OF_ADDINS = 5;
     final static int INVALID = -1;
 
-    public Coffee(String name, int size) {
-        super(name);
+    public Coffee(int quantity, int size) {
+        super("Coffee", quantity);
         this.size = size;
         this.addIn = new boolean[NUM_OF_ADDINS];
         this.addInQuantity = 0;
@@ -152,13 +152,13 @@ public class Coffee extends MenuItem implements Customizable {
         }
         switch (size) {
             case SHORT:
-                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Short" + "::Addins " + addins;
+                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Short" + "::Addins " + addins;
             case TALL:
-                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Tall" + "::Addins " + addins;
+                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Tall" + "::Addins " + addins;
             case GRANDE:
-                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Grande" + "::Addins " + addins;
+                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Grande" + "::Addins " + addins;
             case VENTI:
-                return "Coffee " + "::Quantity " + super.getQuantity() + "::Size Venti" + "::Addins " + addins;
+                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Venti" + "::Addins " + addins;
         }
         return "ERROR";
     }

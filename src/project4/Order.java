@@ -6,4 +6,6 @@ package project4;
  * @author David Ha, Andrew McAvoy
  */
 public class Order {
+
+    private static int orderNumber;
 }
