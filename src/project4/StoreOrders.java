@@ -1,5 +1,6 @@
 package project4;
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * This class represents a StoreOrder container that will contain instances of various orders made
@@ -8,13 +9,13 @@ import java.util.ArrayList;
  * @author David Ha, Andrew McAvoy
  */
 public class StoreOrders implements Customizable{
-    private ArrayList<Order> ordersList;
+    private ObservableList<Order> ordersList;
 
     /**
      * Constructor for store order class
      */
     public StoreOrders(){
-        this.ordersList = new ArrayList<>();
+        this.ordersList = FXCollections.observableArrayList();
     }
 
     /**
