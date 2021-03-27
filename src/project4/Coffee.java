@@ -58,10 +58,10 @@ public class Coffee extends MenuItem implements Customizable {
      */
     @Override
     public boolean add(Object obj) {
-        int index;
         if (obj instanceof String) {
             addIn.add((String)obj);
             addInQuantity++;
+            return true;
         }
         return false;
     }
@@ -74,10 +74,10 @@ public class Coffee extends MenuItem implements Customizable {
      */
     @Override
     public boolean remove(Object obj) {
-        int index;
         if (obj instanceof String) {
             addIn.remove(obj);
             addInQuantity--;
+            return true;
         }
         return false;
     }

@@ -40,6 +40,15 @@ public class MenuItem {
     }
 
     /**
+     * Setter method for quantity
+     *
+     * @param quantity Number of an item
+     */
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    /**
      * Getter method for quantity
      *
      * @return Number of an item
