@@ -1,4 +1,5 @@
 package project4;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -7,30 +8,27 @@ import javafx.collections.ObservableList;
  *
  * @author David Ha, Andrew McAvoy
  */
-public class Order implements Customizable{
+public class Order implements Customizable {
     private ObservableList<MenuItem> items;
     private double subtotal;
     private double taxTotal;
     private double total;
-    private static int orderNumber = 1;
+    private int orderNumber;
+
+    private static int orderNumberTracker = 1;
 
     final static double TAX = 0.06625;
 
     /**
      * Constructor for the Order class
      */
-    public Order(){
+    public Order() {
         this.items = FXCollections.observableArrayList();
-        subtotal = 0;
-    }
-
-    /**
-     * Setter method for order number
-     *
-     * @param orderNumber number to be incremented
-     */
-    public static void setOrderNumber(int orderNumber) {
-        Order.orderNumber = orderNumber;
+        this.subtotal = 0;
+        this.taxTotal = 0;
+        this.total = 0;
+        this.orderNumber = orderNumberTracker;
+        orderNumberTracker++;
     }
 
     /**
@@ -41,14 +39,13 @@ public class Order implements Customizable{
      */
     @Override
     public boolean add(Object obj) {
-        if(obj instanceof MenuItem){
-            if(!items.contains(obj)){
-                items.add((MenuItem)obj);
+        if (obj instanceof MenuItem) {
+            if (!items.contains(obj)) {
+                items.add((MenuItem) obj);
                 subtotal = subtotal + ((MenuItem) obj).getItemPrice();
                 taxTotal = subtotal * TAX;
                 total = subtotal + taxTotal;
-            }
-            else if (items.contains(obj)){
+            } else if (items.contains(obj)) {
                 MenuItem temp = items.get(items.indexOf(obj));
                 temp.setQuantity(((MenuItem) obj).getQuantity() + temp.getQuantity());
                 subtotal = subtotal + ((MenuItem) obj).getItemPrice();
@@ -68,7 +65,7 @@ public class Order implements Customizable{
      */
     @Override
     public boolean remove(Object obj) {
-        if(obj instanceof Donut){
+        if (obj instanceof Donut) {
             items.remove(obj);
             subtotal = subtotal - ((MenuItem) obj).getItemPrice();
             taxTotal = subtotal * TAX;
