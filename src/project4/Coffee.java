@@ -1,4 +1,5 @@
 package project4;
+import java.util.ArrayList;
 
 /**
  * This class extends the MenuItem class and contains common attributes and operations specific to an
@@ -8,7 +9,7 @@ package project4;
  */
 public class Coffee extends MenuItem implements Customizable {
     private int size;
-    private boolean[] addIn;
+    private ArrayList<String> addIn;
     private int addInQuantity;
 
     final static int SHORT = 1;
@@ -22,19 +23,10 @@ public class Coffee extends MenuItem implements Customizable {
     final static double VENTI_PRICE = 3.49;
     final static double ADDIN_PRICE = 0.20;
 
-    final static int CREAM = 0;
-    final static int SYRUP = 1;
-    final static int MILK = 2;
-    final static int CARAMEL = 3;
-    final static int WHIPPED_CREAM = 4;
-
-    final static int NUM_OF_ADDINS = 5;
-    final static int INVALID = -1;
-
     public Coffee(int quantity, int size) {
         super("Coffee", quantity);
         this.size = size;
-        this.addIn = new boolean[NUM_OF_ADDINS];
+        this.addIn = new ArrayList<>();
         this.addInQuantity = 0;
     }
 
@@ -68,11 +60,8 @@ public class Coffee extends MenuItem implements Customizable {
     public boolean add(Object obj) {
         int index;
         if (obj instanceof String) {
-            index = getIndex((String) obj);
-            if ((index > INVALID) && (addIn[index] != true)) {
-                addIn[index] = true;
-                return true;
-            }
+            addIn.add((String)obj);
+            addInQuantity++;
         }
         return false;
     }
@@ -87,40 +76,10 @@ public class Coffee extends MenuItem implements Customizable {
     public boolean remove(Object obj) {
         int index;
         if (obj instanceof String) {
-            index = getIndex((String) obj);
-            if ((index > INVALID) && (addIn[index] != false)) {
-                addIn[index] = false;
-                return true;
-            }
+            addIn.remove(obj);
+            addInQuantity--;
         }
         return false;
-    }
-
-    /**
-     * Helper method to aid in retrieval of index of the add-in component relative to the addIn container
-     *
-     * @param obj Add-in to be added to the coffee
-     * @return index of the add-in in the addIn container
-     */
-    private int getIndex(String obj) {
-        int index = INVALID;
-        switch (obj) {
-            case "Cream":
-                index = CREAM;
-                break;
-            case "Syrup":
-                index = SYRUP;
-                break;
-            case "Milk":
-                index = MILK;
-                break;
-            case "Caramel":
-                index = CARAMEL;
-                break;
-            case "Whipped Cream":
-                index = WHIPPED_CREAM;
-        }
-        return index;
     }
 
     /**
@@ -132,23 +91,13 @@ public class Coffee extends MenuItem implements Customizable {
     @Override
     public String toString() {
         String addins = "";
-        if (addIn[CREAM]) {
-            addins = addins + "Cream ";
+        if(addIn.isEmpty()){
+            addins = "None";
         }
-        if (addIn[SYRUP]) {
-            addins = addins + "Syrup ";
-        }
-        if (addIn[MILK]) {
-            addins = addins + "Milk ";
-        }
-        if (addIn[CARAMEL]) {
-            addins = addins + "Caramel ";
-        }
-        if (addIn[WHIPPED_CREAM]) {
-            addins = addins + "Whipped Cream ";
-        }
-        if (addins.isEmpty()) {
-            addins = addins + "None";
+        else{
+            for(String add: addIn){
+                addins = addins + add;
+            }
         }
         switch (size) {
             case SHORT:
