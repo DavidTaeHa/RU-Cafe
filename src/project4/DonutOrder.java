@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
  * @author David Ha, Andrew McAvoy
  */
 public class DonutOrder implements Customizable{
+    private ObservableList<String> donutType;
     private ObservableList<String> yeastList;
     private ObservableList<String> cakeList;
     private ObservableList<String> holeList;
@@ -18,11 +19,57 @@ public class DonutOrder implements Customizable{
      * Constructor for the DonutOrder class
      */
     public DonutOrder(){
+        this.donutType = FXCollections.observableArrayList("yeast", "cake", "hole");
         this.yeastList = FXCollections.observableArrayList("original", "glazed", "strawberry");
         this.cakeList = FXCollections.observableArrayList("chocolate", "cider", "maple-bacon");
         this.holeList = FXCollections.observableArrayList("chocolate", "jelly", "powder");
         this.donutOrder = FXCollections.observableArrayList();
         this.donutSubtotal = 0;
+    }
+
+    /**
+     * Getter method for list of different donut types
+     *
+     * @return list of donut types
+     */
+    public ObservableList<String> getDonutType() {
+        return donutType;
+    }
+
+    /**
+     * Getter method for the list of yeast donuts
+     *
+     * @return list of yeast donuts
+     */
+    public ObservableList<String> getYeastList() {
+        return yeastList;
+    }
+
+    /**
+     * Getter method for the list of cake donuts
+     *
+     * @return list of cake donuts
+     */
+    public ObservableList<String> getCakeList() {
+        return cakeList;
+    }
+
+    /**
+     * Getter method for the list of hole donuts
+     *
+     * @return list of yeast donuts
+     */
+    public ObservableList<String> getHoleList() {
+        return holeList;
+    }
+
+    /**
+     * Getter method for the list of donuts in the order
+     *
+     * @return donut order list
+     */
+    public ObservableList<Donut> getDonutOrder() {
+        return donutOrder;
     }
 
     /**

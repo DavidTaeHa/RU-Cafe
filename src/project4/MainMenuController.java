@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -16,8 +15,6 @@ import java.io.IOException;
  * @author David Ha, Andrew McAvoy
  */
 public class MainMenuController {
-    @FXML
-    private Button donutButton, coffeeButton, pastOrderButton, cartButton;
 
     @FXML
     void openCartMenu(ActionEvent event) {
@@ -37,7 +34,10 @@ public class MainMenuController {
     @FXML
     void openDonutMenu(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("DonutSelect.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DonutSelect.fxml"));
+            Parent root = loader.load();
+            //DonutController donutController = loader.getController();
+            //donutController.setMainMenuController(this);
             Stage donutWindow = new Stage();
             donutWindow.setTitle("Donut Order Menu");
             donutWindow.setScene(new Scene(root));

@@ -8,22 +8,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project4.DonutController">
    <children>
-      <ListView layoutX="279.0" layoutY="45.0" prefHeight="250.0" prefWidth="200.0" />
-      <ComboBox layoutX="31.0" layoutY="170.0" prefWidth="150.0" promptText="Choose Donut Type" />
-      <ComboBox disable="true" layoutX="31.0" layoutY="200.0" prefWidth="150.0" promptText="Choose Flavor" />
-      <TextArea layoutX="31.0" layoutY="288.0" prefHeight="42.0" prefWidth="94.0" promptText="Quantity">
+      <ListView fx:id="orderList" layoutX="279.0" layoutY="45.0" prefHeight="250.0" prefWidth="200.0" />
+      <ComboBox fx:id="donutType" layoutX="31.0" layoutY="170.0" onAction="#changeFlavor" prefWidth="150.0" promptText="Choose Donut Type" />
+      <ComboBox fx:id="donutFlavor" disable="true" layoutX="31.0" layoutY="200.0" prefWidth="150.0" promptText="Choose Flavor" />
+      <TextArea fx:id="quantity" layoutX="31.0" layoutY="288.0" prefHeight="42.0" prefWidth="94.0" promptText="Quantity">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
-      <Button disable="true" layoutX="129.0" layoutY="288.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="52.0" text="Add" />
-      <Button disable="true" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" text="Remove Selected" />
+      <Button fx:id="addOrderButton" disable="true" layoutX="129.0" layoutY="288.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="43.0" prefWidth="94.0" text="Add to Order" />
+      <Button fx:id="removeButton" disable="true" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" text="Remove Selected" />
       <Text layoutX="287.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Order:">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
+      <Button fx:id="addCartButton" disable="true" layoutX="279.0" layoutY="341.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Add to Cart" />
    </children>
 </AnchorPane>
