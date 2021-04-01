@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 public class MainMenuController {
     @FXML
-    private Button orderDonutButton, orderCoffeeButton, pastOrderButton, cartButton;
+    private Button donutButton, coffeeButton, pastOrderButton, cartButton;
 
     @FXML
     void openCartMenu(ActionEvent event) {
@@ -36,7 +36,16 @@ public class MainMenuController {
      */
     @FXML
     void openDonutMenu(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("DonutSelect.fxml"));
+            Stage donutWindow = new Stage();
+            donutWindow.setTitle("Donut Order Menu");
+            donutWindow.setScene(new Scene(root));
+            donutWindow.show();
+        }
+        catch(IOException e){
 
+        }
     }
 
     @FXML
