@@ -19,10 +19,10 @@ public class DonutOrder implements Customizable{
      * Constructor for the DonutOrder class
      */
     public DonutOrder(){
-        this.donutType = FXCollections.observableArrayList("yeast", "cake", "hole");
-        this.yeastList = FXCollections.observableArrayList("original", "glazed", "strawberry");
-        this.cakeList = FXCollections.observableArrayList("chocolate", "cider", "maple-bacon");
-        this.holeList = FXCollections.observableArrayList("chocolate", "jelly", "powder");
+        this.donutType = FXCollections.observableArrayList("Yeast", "Cake", "Hole");
+        this.yeastList = FXCollections.observableArrayList("Original", "Glazed", "Strawberry");
+        this.cakeList = FXCollections.observableArrayList("Chocolate", "Cider", "Maple-bacon");
+        this.holeList = FXCollections.observableArrayList("Chocolate", "Jelly", "Powder");
         this.donutOrder = FXCollections.observableArrayList();
         this.donutSubtotal = 0;
     }

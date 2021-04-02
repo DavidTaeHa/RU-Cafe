@@ -11,7 +11,6 @@
       <change beforePath="$PROJECT_DIR$/src/project4/DonutOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/DonutOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project4/DonutSelect.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/DonutSelect.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project4/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/test.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,17 +220,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -276,6 +264,7 @@
       <workItem from="1616538757062" duration="9931000" />
       <workItem from="1616875981036" duration="7450000" />
       <workItem from="1617245881300" duration="8223000" />
+      <workItem from="1617325019057" duration="2943000" />
     </task>
     <servers />
   </component>

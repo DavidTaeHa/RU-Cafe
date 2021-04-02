@@ -12,14 +12,14 @@
    <children>
       <ListView fx:id="orderList" layoutX="279.0" layoutY="45.0" prefHeight="250.0" prefWidth="200.0" />
       <ComboBox fx:id="donutType" layoutX="31.0" layoutY="170.0" onAction="#changeFlavor" prefWidth="150.0" promptText="Choose Donut Type" />
-      <ComboBox fx:id="donutFlavor" disable="true" layoutX="31.0" layoutY="200.0" prefWidth="150.0" promptText="Choose Flavor" />
-      <TextArea fx:id="quantity" layoutX="31.0" layoutY="288.0" prefHeight="42.0" prefWidth="94.0" promptText="Quantity">
+      <ComboBox fx:id="donutFlavor" disable="true" layoutX="31.0" layoutY="200.0" onAction="#enableQuantity" prefWidth="150.0" promptText="Choose Flavor" />
+      <TextArea fx:id="quantity" disable="true" layoutX="31.0" layoutY="288.0" prefHeight="42.0" prefWidth="94.0" promptText="Quantity">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
       <Button fx:id="addOrderButton" disable="true" layoutX="129.0" layoutY="288.0" mnemonicParsing="false" onAction="#addToOrder" prefHeight="43.0" prefWidth="94.0" text="Add to Order" />
-      <Button fx:id="removeButton" disable="true" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" text="Remove Selected" />
+      <Button fx:id="removeButton" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" onAction="#removeFromOrder" text="Remove Selected" />
       <Text layoutX="287.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Order:">
          <font>
             <Font size="20.0" />

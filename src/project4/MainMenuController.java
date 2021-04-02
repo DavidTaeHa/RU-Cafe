@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,6 +42,7 @@ public class MainMenuController {
             Stage donutWindow = new Stage();
             donutWindow.setTitle("Donut Order Menu");
             donutWindow.setScene(new Scene(root));
+            donutWindow.initModality(Modality.APPLICATION_MODAL);
             donutWindow.show();
         }
         catch(IOException e){
