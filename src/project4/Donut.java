@@ -29,37 +29,46 @@ public class Donut extends MenuItem {
     }
 
     /**
+     * Getter method for donut type
+     *
+     * @return
+     */
+    public int getDonutType() {
+        return donutType;
+    }
+
+    /**
      * Calculates the price of a donut
      */
     @Override
     public void calculateItemPrice() {
         switch (donutType) {
             case YEAST_DONUT:
-                super.setItemPrice(YEAST_PRICE);
+                super.setItemPrice(YEAST_PRICE * getQuantity());
                 break;
             case CAKE_DONUT:
-                super.setItemPrice(CAKE_PRICE);
+                super.setItemPrice(CAKE_PRICE * getQuantity());
                 break;
             case DONUT_HOLE:
-                super.setItemPrice(HOLE_PRICE);
+                super.setItemPrice(HOLE_PRICE * getQuantity());
                 break;
         }
     }
 
     /**
      * Prints instance of this class in the following form
-     * name::quantity::donutType
+     * name(quantity) - donutType
      *
      * @return textual representation of an instance of a donut class
      */
     public String toString() {
         switch (donutType) {
             case YEAST_DONUT:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Yeast Donut";
+                return super.getName() + " (" + super.getQuantity() + ") - Yeast Donut";
             case CAKE_DONUT:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Cake Donut";
+                return super.getName() + " (" + super.getQuantity() + ") - Cake Donut";
             case DONUT_HOLE:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Donut Hole";
+                return super.getName() + " (" + super.getQuantity() + ") - Donut Hole";
         }
         return "ERROR";
     }

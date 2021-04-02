@@ -28,6 +28,15 @@ public class DonutOrder implements Customizable{
     }
 
     /**
+     * Getter method for donut subtotal for items within donut order
+     *
+     * @return subtotal of donuts
+     */
+    public double getDonutSubtotal() {
+        return donutSubtotal;
+    }
+
+    /**
      * Getter method for list of different donut types
      *
      * @return list of donut types
@@ -73,6 +82,13 @@ public class DonutOrder implements Customizable{
     }
 
     /**
+     * Sets donut subtotal to zero
+     */
+    public void reset(){
+        donutSubtotal = 0;
+    }
+
+    /**
      * Adds donuts to the donut order container and adds to the donut subtotal
      *
      * @param obj donut to be added to donut order
@@ -81,13 +97,15 @@ public class DonutOrder implements Customizable{
     @Override
     public boolean add(Object obj) {
         if(obj instanceof Donut){
-            if(!donutOrder.contains(obj)){
+            if(!hasItem((Donut) obj)){
                 donutOrder.add((Donut)obj);
+                ((Donut) obj).calculateItemPrice();
                 donutSubtotal = donutSubtotal + ((Donut) obj).getItemPrice();
             }
-            else if (donutOrder.contains(obj)){
-                Donut temp = donutOrder.get(donutOrder.indexOf(obj));
+            else if (hasItem((Donut) obj)){
+                Donut temp = donutOrder.get(getItem((Donut) obj));
                 temp.setQuantity(((Donut) obj).getQuantity() + temp.getQuantity());
+                ((Donut) obj).calculateItemPrice();
                 donutSubtotal = donutSubtotal + ((Donut) obj).getItemPrice();
             }
             return true;
@@ -105,10 +123,44 @@ public class DonutOrder implements Customizable{
     public boolean remove(Object obj) {
         if(obj instanceof Donut){
             donutOrder.remove(obj);
+            ((Donut) obj).calculateItemPrice();
             donutSubtotal = donutSubtotal - ((Donut) obj).getItemPrice();
             return true;
         }
         return false;
+    }
+
+    /**
+     * Helper method to check if the donut order already contains an instance of a donut
+     * to be added to the order
+     *
+     * @param donut donut to be checked within the donut order
+     * @return true if it exists; false if otherwise
+     */
+    private boolean hasItem(Donut donut){
+        for(Donut temp:donutOrder){
+            if(temp.getName().equals(donut.getName()) && temp.getDonutType() == donut.getDonutType()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Helper method to get an index of a donut within the donut order
+     *
+     * @param donut donut to be found within the donut order
+     * @return true if it exists; false if otherwise
+     */
+    private int getItem(Donut donut){
+        int index = 0;
+        for(Donut temp:donutOrder){
+            if(temp.getName().equals(donut.getName()) && temp.getDonutType() == donut.getDonutType()){
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
 }

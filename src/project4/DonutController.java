@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
+import java.text.NumberFormat;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,12 +27,13 @@ public class DonutController implements Initializable {
     private ComboBox<String> donutType, donutFlavor;
 
     @FXML
-    private TextArea quantity;
+    private TextArea quantity, subtotal;
 
     @FXML
-    private Button addOrderButton, removeButton, addCartButton;
+    private Button addOrderButton, addCartButton;
 
-    DonutOrder order;
+    private MainMenuController controller;
+    private DonutOrder order;
     final static int MIN_DONUT = 1;
     final static int YEAST_DONUT = 1;
     final static int CAKE_DONUT = 2;
@@ -48,6 +50,21 @@ public class DonutController implements Initializable {
         order = new DonutOrder();
         donutType.setItems(order.getDonutType());
         orderList.setItems(order.getDonutOrder());
+    }
+
+    public void setMainMenuController(MainMenuController controller){
+        this.controller = controller;
+    }
+
+    @FXML
+    void addToCart(ActionEvent event){
+        controller.addItems(order);
+        showMessage("Items have been added to the cart.");
+        order.reset();
+        order.getDonutOrder().clear();
+        subtotal.clear();
+        orderList.refresh();
+        addCartButton.setDisable(true);
     }
 
     /**
@@ -78,6 +95,13 @@ public class DonutController implements Initializable {
                     break;
             }
             order.add(donut);
+            orderList.refresh();
+            subtotal.clear();
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            subtotal.appendText(formatter.format(order.getDonutSubtotal()));
+            if(!order.getDonutOrder().isEmpty()){
+                addCartButton.setDisable(false);
+            }
         }
         catch(NumberFormatException e){
             showAlert("Input must be a whole number!");
@@ -93,7 +117,17 @@ public class DonutController implements Initializable {
     @FXML
     void removeFromOrder(ActionEvent event){
         //May need to add error handling for nonselected item
+        if(orderList.getSelectionModel().getSelectedItem() == null){
+            showAlert("Please select an item to remove");
+            return;
+        }
         order.remove(orderList.getSelectionModel().getSelectedItem());
+        subtotal.clear();
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        subtotal.appendText(formatter.format(order.getDonutSubtotal()));
+        if(order.getDonutOrder().isEmpty()){
+            addCartButton.setDisable(true);
+        }
     }
 
     /**
@@ -131,13 +165,26 @@ public class DonutController implements Initializable {
     }
 
     /**
-     * Helper method to aid in creating a alert box
+     * Helper method to aid in creating an error box
      *
-     * @param message
+     * @param message text to be said within the error box
      */
     private void showAlert(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Warning");
+        alert.setContentText(message);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.showAndWait();
+    }
+
+    /**
+     * Helper method to aid in creating a message box
+     *
+     * @param message text to be said within the message box
+     */
+    private void showMessage(String message){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
         alert.setContentText(message);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.showAndWait();

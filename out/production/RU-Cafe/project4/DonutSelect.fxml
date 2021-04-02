@@ -25,6 +25,8 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button fx:id="addCartButton" disable="true" layoutX="279.0" layoutY="341.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="107.0" text="Add to Cart" />
+      <Button fx:id="addCartButton" disable="true" layoutX="279.0" layoutY="341.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="26.0" prefWidth="107.0" text="Add to Cart" />
+      <Text layoutX="419.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal" />
+      <TextArea fx:id="subtotal" editable="false" layoutX="400.0" layoutY="329.0" prefHeight="33.0" prefWidth="82.0" />
    </children>
 </AnchorPane>

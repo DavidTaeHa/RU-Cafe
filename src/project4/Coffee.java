@@ -101,13 +101,13 @@ public class Coffee extends MenuItem implements Customizable {
         }
         switch (size) {
             case SHORT:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Short" + "::Addins " + addins;
+                return super.getName() + " (" + super.getQuantity() + "), Short" + ", [" + addins + "]";
             case TALL:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Tall" + "::Addins " + addins;
+                return super.getName() + " (" + super.getQuantity() + "), Tall" + ", [" + addins + "]";
             case GRANDE:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Grande" + "::Addins " + addins;
+                return super.getName() + " (" + super.getQuantity() + "), Grande" + ", [" + addins + "]";
             case VENTI:
-                return super.getName() + "::Quantity " + super.getQuantity() + "::Size Venti" + "::Addins " + addins;
+                return super.getName() + " (" + super.getQuantity() + "), Venti" + ", [" + addins + "]";
         }
         return "ERROR";
     }
