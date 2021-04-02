@@ -70,7 +70,6 @@ public class DonutController implements Initializable {
     @FXML
     void addToCart(ActionEvent event){
         controller.addItems(order);
-        controller.getOrder().setSubtotal(controller.getOrder().getSubtotal() + order.getDonutSubtotal());
         showMessage("Items have been added to the cart.");
         order.reset();
         order.getDonutOrder().clear();

@@ -59,15 +59,6 @@ public class Order implements Customizable {
     }
 
     /**
-     * Setter method for the subtotal of items
-     *
-     * @param subtotal
-     */
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    /**
      * Getter method for list of items
      *
      * @return list if items within the order
