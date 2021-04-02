@@ -28,5 +28,10 @@
       <Button fx:id="addCartButton" disable="true" layoutX="279.0" layoutY="341.0" mnemonicParsing="false" onAction="#addToCart" prefHeight="26.0" prefWidth="107.0" text="Add to Cart" />
       <Text layoutX="419.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subtotal" />
       <TextArea fx:id="subtotal" editable="false" layoutX="400.0" layoutY="329.0" prefHeight="33.0" prefWidth="82.0" />
+      <Text layoutX="25.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Donut Menu" wrappingWidth="208.80003662109357">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

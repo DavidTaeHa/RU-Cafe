@@ -37,7 +37,20 @@ public class MainMenuController implements Initializable {
 
     @FXML
     void openCartMenu(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Cart.fxml"));
+            Parent root = loader.load();
+            CheckoutController checkoutController = loader.getController();
+            checkoutController.setMainMenuController(this);
+            Stage cartWindow = new Stage();
+            cartWindow.setTitle("Cart");
+            cartWindow.setScene(new Scene(root));
+            cartWindow.initModality(Modality.APPLICATION_MODAL);
+            cartWindow.show();
+        }
+        catch(IOException e){
+            return;
+        }
     }
 
     @FXML
@@ -64,7 +77,7 @@ public class MainMenuController implements Initializable {
             donutWindow.show();
         }
         catch(IOException e){
-
+            return;
         }
     }
 
@@ -94,7 +107,16 @@ public class MainMenuController implements Initializable {
         for (MenuItem temp : order.getItems()) {
             System.out.println(temp);
         }
+        System.out.println("Subtotal " + order.getSubtotal());
         System.out.println("--------------------");
     }
 
+    /**
+     * Getter method for the order
+     *
+     * @return order of menu items
+     */
+    public Order getOrder() {
+        return order;
+    }
 }

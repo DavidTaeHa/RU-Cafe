@@ -32,12 +32,62 @@ public class Order implements Customizable {
     }
 
     /**
+     * Getter method for the subtotal of items
+     *
+     * @return subtotal
+     */
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    /**
+     * Getter method for the tax of items
+     *
+     * @return total tax
+     */
+    public double getTaxTotal() {
+        return taxTotal;
+    }
+
+    /**
+     * Getter method for the total
+     *
+     * @return total price
+     */
+    public double getTotal() {
+        return total;
+    }
+
+    /**
+     * Setter method for the subtotal of items
+     *
+     * @param subtotal
+     */
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    /**
      * Getter method for list of items
      *
      * @return list if items within the order
      */
     public ObservableList<MenuItem> getItems() {
         return items;
+    }
+
+    /**
+     * Calculates the tax of the items
+     */
+    public void calculateTax(){
+        taxTotal = subtotal * TAX;
+    }
+
+    /**
+     * Calculates the total of the items
+     */
+    public void calculateTotal(){
+        total = taxTotal + subtotal;
     }
 
     /**
@@ -52,14 +102,10 @@ public class Order implements Customizable {
             if (!hasItem((MenuItem) obj)) {
                 items.add((MenuItem) obj);
                 subtotal = subtotal + ((MenuItem) obj).getItemPrice();
-                taxTotal = subtotal * TAX;
-                total = subtotal + taxTotal;
             } else if (hasItem((MenuItem) obj)) {
                 MenuItem temp = items.get(getItem((MenuItem) obj));
                 temp.setQuantity(((MenuItem) obj).getQuantity() + temp.getQuantity());
                 subtotal = subtotal + ((MenuItem) obj).getItemPrice();
-                taxTotal = subtotal * TAX;
-                total = subtotal + taxTotal;
             }
             return true;
         }
@@ -77,18 +123,16 @@ public class Order implements Customizable {
         if (obj instanceof Donut) {
             items.remove(obj);
             subtotal = subtotal - ((MenuItem) obj).getItemPrice();
-            taxTotal = subtotal * TAX;
-            total = subtotal + taxTotal;
             return true;
         }
         return false;
     }
 
     /**
-     * Helper method to check if the donut order already contains an instance of a donut
+     * Helper method to check if the order already contains an instance of a menu item
      * to be added to the order
      *
-     * @param donut donut to be checked within the donut order
+     * @param item item to be checked within the order
      * @return true if it exists; false if otherwise
      */
     private boolean hasItem(MenuItem item) {
@@ -106,7 +150,7 @@ public class Order implements Customizable {
     }
 
     /**
-     * Helper method to get an index of a menuitem within the order
+     * Helper method to get an index of a menu item within the order
      *
      * @param item menu item to be found within the order
      * @return true if it exists; false if otherwise

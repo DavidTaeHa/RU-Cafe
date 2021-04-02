@@ -52,13 +52,25 @@ public class DonutController implements Initializable {
         orderList.setItems(order.getDonutOrder());
     }
 
+    /**
+     * Gets reference of the main controller to share data betweeen the Donut Controller and
+     * the main controller
+     *
+     * @param controller main controller
+     */
     public void setMainMenuController(MainMenuController controller){
         this.controller = controller;
     }
 
+    /**
+     * Adds items from the donut order list to the main cart
+     *
+     * @param event
+     */
     @FXML
     void addToCart(ActionEvent event){
         controller.addItems(order);
+        controller.getOrder().setSubtotal(controller.getOrder().getSubtotal() + order.getDonutSubtotal());
         showMessage("Items have been added to the cart.");
         order.reset();
         order.getDonutOrder().clear();
@@ -116,7 +128,6 @@ public class DonutController implements Initializable {
      */
     @FXML
     void removeFromOrder(ActionEvent event){
-        //May need to add error handling for nonselected item
         if(orderList.getSelectionModel().getSelectedItem() == null){
             showAlert("Please select an item to remove");
             return;
