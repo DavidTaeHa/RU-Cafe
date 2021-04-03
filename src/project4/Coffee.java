@@ -16,6 +16,7 @@ public class Coffee extends MenuItem implements Customizable {
     final static int TALL = 2;
     final static int GRANDE = 3;
     final static int VENTI = 4;
+    final static int INVALID = -1;
 
     final static double SHORT_PRICE = 1.99;
     final static double TALL_PRICE = 2.49;
@@ -28,6 +29,15 @@ public class Coffee extends MenuItem implements Customizable {
         this.size = size;
         this.addIn = new ArrayList<>();
         this.addInQuantity = 0;
+    }
+
+    /**
+     * Setter method for coffee size
+     *
+     * @param size
+     */
+    public void setSize(int size) {
+        this.size = size;
     }
 
     /**
@@ -47,6 +57,9 @@ public class Coffee extends MenuItem implements Customizable {
                 break;
             case VENTI:
                 super.setItemPrice(VENTI_PRICE + (addInQuantity * ADDIN_PRICE));
+                break;
+            case INVALID:
+                super.setItemPrice(addInQuantity * ADDIN_PRICE);
         }
     }
 
@@ -92,11 +105,11 @@ public class Coffee extends MenuItem implements Customizable {
     public String toString() {
         String addins = "";
         if(addIn.isEmpty()){
-            addins = "None";
+            addins = "No Addins";
         }
         else{
             for(String add: addIn){
-                addins = addins + add;
+                addins = addins + add + " ";
             }
         }
         switch (size) {

@@ -111,7 +111,7 @@ public class Order implements Customizable {
      */
     @Override
     public boolean remove(Object obj) {
-        if (obj instanceof Donut) {
+        if (obj instanceof MenuItem) {
             items.remove(obj);
             subtotal = subtotal - ((MenuItem) obj).getItemPrice();
             return true;
