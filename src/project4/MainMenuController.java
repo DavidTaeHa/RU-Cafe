@@ -55,7 +55,20 @@ public class MainMenuController implements Initializable {
 
     @FXML
     void openCoffeeMenu(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CoffeeSelect.fxml"));
+            Parent root = loader.load();
+            CoffeeController coffeeController = loader.getController();
+            coffeeController.setMainMenuController(this);
+            Stage coffeeWindow = new Stage();
+            coffeeWindow.setTitle("Coffee Order Menu");
+            coffeeWindow.setScene(new Scene(root));
+            coffeeWindow.initModality(Modality.APPLICATION_MODAL);
+            coffeeWindow.show();
+        }
+        catch(IOException e){
+            return;
+        }
     }
 
     /**
