@@ -41,9 +41,9 @@ public class CheckoutController {
         order.calculateTax();
         order.calculateTotal();
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        subtotal.appendText(formatter.format(order.getSubtotal()));
-        tax.appendText(formatter.format(order.getTaxTotal()));
-        total.appendText(formatter.format(order.getTotal()));
+        subtotal.setText(formatter.format(order.getSubtotal()));
+        tax.setText(formatter.format(order.getTaxTotal()));
+        total.setText(formatter.format(order.getTotal()));
     }
 
     @FXML
@@ -63,15 +63,12 @@ public class CheckoutController {
             return;
         }
         order.remove(cart.getSelectionModel().getSelectedItem());
-        subtotal.clear();
-        tax.clear();
-        total.clear();
         order.calculateTax();
         order.calculateTotal();
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        subtotal.appendText(formatter.format(order.getSubtotal()));
-        tax.appendText(formatter.format(order.getTaxTotal()));
-        total.appendText(formatter.format(order.getTotal()));
+        subtotal.setText(formatter.format(order.getSubtotal()));
+        tax.setText(formatter.format(order.getTaxTotal()));
+        total.setText(formatter.format(order.getTotal()));
         if(order.getItems().isEmpty()){
             removeButton.setDisable(true);
         }
