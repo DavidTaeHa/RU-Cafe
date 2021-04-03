@@ -89,6 +89,7 @@ public class CoffeeController implements Initializable {
         Coffee temp = coffee;
         showMessage("Coffee has been added to the cart.");
         coffee = new Coffee(quantity.getValue().intValue(), temp.getSize());
+        coffee.calculateItemPrice();
     }
 
     /**
@@ -136,10 +137,10 @@ public class CoffeeController implements Initializable {
             coffee.remove("Caramel");
         }
         if(whipped.isSelected()){
-            coffee.add("Whipped");
+            coffee.add("Whipped-Cream");
         }
         else if(!whipped.isSelected()){
-            coffee.remove("Whipped");
+            coffee.remove("Whipped-Cream");
         }
         coffee.calculateItemPrice();
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
