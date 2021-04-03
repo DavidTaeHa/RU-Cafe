@@ -106,6 +106,7 @@ public class DonutOrder implements Customizable{
                 Donut temp = donutOrder.get(getItem((Donut) obj));
                 temp.setQuantity(((Donut) obj).getQuantity() + temp.getQuantity());
                 ((Donut) obj).calculateItemPrice();
+                ((Donut) temp).calculateItemPrice();
                 donutSubtotal = donutSubtotal + ((Donut) obj).getItemPrice();
             }
             return true;

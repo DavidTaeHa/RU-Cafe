@@ -90,13 +90,18 @@ public class Order implements Customizable {
     @Override
     public boolean add(Object obj) {
         if (obj instanceof MenuItem) {
-            if (!hasItem((MenuItem) obj)) {
-                items.add((MenuItem) obj);
-                subtotal = subtotal + ((MenuItem) obj).getItemPrice();
-            } else if (hasItem((MenuItem) obj)) {
+            if(obj instanceof Coffee){
+                items.add((Coffee)obj);
+                subtotal = subtotal + ((Coffee) obj).getItemPrice();
+            }
+            else if (!hasItem((MenuItem) obj) && obj instanceof Donut) {
+                items.add((Donut) obj);
+                subtotal = subtotal + ((Donut) obj).getItemPrice();
+            } else if (hasItem((MenuItem) obj) && obj instanceof Donut) {
                 MenuItem temp = items.get(getItem((MenuItem) obj));
                 temp.setQuantity(((MenuItem) obj).getQuantity() + temp.getQuantity());
                 subtotal = subtotal + ((MenuItem) obj).getItemPrice();
+                temp.calculateItemPrice();
             }
             return true;
         }
@@ -134,8 +139,6 @@ public class Order implements Customizable {
                     return true;
                 }
             }
-        } else if (item instanceof Coffee) {
-
         }
         return false;
     }
@@ -156,8 +159,6 @@ public class Order implements Customizable {
                 }
                 index++;
             }
-        } else if (item instanceof Coffee) {
-
         }
         return -1;
     }

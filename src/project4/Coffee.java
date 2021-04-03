@@ -32,6 +32,33 @@ public class Coffee extends MenuItem implements Customizable {
     }
 
     /**
+     * Getter method for addin quantity
+     *
+     * @return addin quantity
+     */
+    public int getAddInQuantity() {
+        return addInQuantity;
+    }
+
+    /**
+     * Getter method for the coffee addins
+     *
+     * @return list of coffee addins
+     */
+    public ArrayList<String> getAddIn() {
+        return addIn;
+    }
+
+    /**
+     * Getter method for the size of the coffee
+     *
+     * @return size of the coffee
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
      * Setter method for coffee size
      *
      * @param size
@@ -47,19 +74,19 @@ public class Coffee extends MenuItem implements Customizable {
     public void calculateItemPrice() {
         switch (size) {
             case SHORT:
-                super.setItemPrice(SHORT_PRICE + (addInQuantity * ADDIN_PRICE));
+                super.setItemPrice(super.getQuantity() * (SHORT_PRICE + (addInQuantity * ADDIN_PRICE)));
                 break;
             case TALL:
-                super.setItemPrice(TALL_PRICE + (addInQuantity * ADDIN_PRICE));
+                super.setItemPrice(super.getQuantity() * (TALL_PRICE + (addInQuantity * ADDIN_PRICE)));
                 break;
             case GRANDE:
-                super.setItemPrice(GRANDE_PRICE + (addInQuantity * ADDIN_PRICE));
+                super.setItemPrice(super.getQuantity() * (GRANDE_PRICE + (addInQuantity * ADDIN_PRICE)));
                 break;
             case VENTI:
-                super.setItemPrice(VENTI_PRICE + (addInQuantity * ADDIN_PRICE));
+                super.setItemPrice(super.getQuantity() * (VENTI_PRICE + (addInQuantity * ADDIN_PRICE)));
                 break;
             case INVALID:
-                super.setItemPrice(addInQuantity * ADDIN_PRICE);
+                super.setItemPrice(super.getQuantity() * (addInQuantity * ADDIN_PRICE));
         }
     }
 
@@ -71,7 +98,7 @@ public class Coffee extends MenuItem implements Customizable {
      */
     @Override
     public boolean add(Object obj) {
-        if (obj instanceof String) {
+        if (obj instanceof String && !addIn.contains(obj)) {
             addIn.add((String)obj);
             addInQuantity++;
             return true;
@@ -87,7 +114,7 @@ public class Coffee extends MenuItem implements Customizable {
      */
     @Override
     public boolean remove(Object obj) {
-        if (obj instanceof String) {
+        if (obj instanceof String && addIn.contains(obj)) {
             addIn.remove(obj);
             addInQuantity--;
             return true;

@@ -117,11 +117,6 @@ public class MainMenuController implements Initializable {
         for (Donut temp : donuts.getDonutOrder()) {
             order.add(temp);
         }
-        for (MenuItem temp : order.getItems()) {
-            System.out.println(temp);
-        }
-        System.out.println("Subtotal " + order.getSubtotal());
-        System.out.println("--------------------");
     }
 
     /**

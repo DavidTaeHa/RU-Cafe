@@ -70,7 +70,9 @@ public class CoffeeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         size.setItems(FXCollections.observableArrayList("Short", "Tall", "Grande", "Venti"));
         quantity.setItems(FXCollections.observableArrayList(ONE, TWO, THREE, FOUR, FIVE));
+        quantity.getSelectionModel().select(NONE);
         coffee = new Coffee(NONE, INVALID);
+        coffee.setQuantity(quantity.getValue().intValue());
     }
 
     /**
@@ -80,25 +82,21 @@ public class CoffeeController implements Initializable {
      */
     @FXML
     void addToCart(ActionEvent event) {
-        coffee.calculateItemPrice();
         controller.addItems(coffee);
-        showAlert("Coffee has been added to the cart.");
-        cream.setSelected(false);
-        syrup.setSelected(false);
-        milk.setSelected(false);
-        caramel.setSelected(false);
-        whipped.setSelected(false);
+        Coffee temp = coffee;
+        showMessage("Coffee has been added to the cart.");
+        coffee = new Coffee(quantity.getValue().intValue(), temp.getSize());
     }
 
     /**
-     * Enables the add button when sufficient information is available
+     * Event listener for whenever the quantity is changed; Changes subtotal accordingly
      *
      * @param event
      */
     @FXML
-    void enableAdd(KeyEvent event) {
-            addCartButton.setDisable(false);
+    void quantityChange(ActionEvent event) {
             coffee.setQuantity(quantity.getValue().intValue());
+            coffee.calculateItemPrice();
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             subtotal.setText(formatter.format(coffee.getItemPrice()));
     }
@@ -146,12 +144,12 @@ public class CoffeeController implements Initializable {
     }
 
     /**
-     * Enables the quantity text area once the size of the coffee is given
+     * Retrieves the size input for the coffee; also enables the add to order button
      *
      * @param event
      */
     @FXML
-    void enableQuantity(ActionEvent event){
+    void sizeAction (ActionEvent event){
         switch (size.getValue()){
             case "Short":
                 coffee.setSize(SHORT);
@@ -169,15 +167,15 @@ public class CoffeeController implements Initializable {
         coffee.calculateItemPrice();
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         subtotal.setText(formatter.format(coffee.getItemPrice()));
-        quantity.setDisable(false);
+        addCartButton.setDisable(false);
     }
 
     /**
-     * Helper method to aid in creating an error box
+     * Helper method to aid in creating a message box
      *
      * @param message text to be said within the error box
      */
-    private void showAlert(String message){
+    private void showMessage(String message){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setContentText(message);
