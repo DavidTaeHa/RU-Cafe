@@ -44,11 +44,25 @@ public class CheckoutController {
         subtotal.setText(formatter.format(order.getSubtotal()));
         tax.setText(formatter.format(order.getTaxTotal()));
         total.setText(formatter.format(order.getTotal()));
+        if(order.getSubtotal() > 0){
+            orderButton.setDisable(false);
+        }
     }
 
     @FXML
     void placeOrder(ActionEvent event) {
-
+        controller.placeOrder(order);
+        controller.createOrder();
+        order = controller.getOrder();
+        cart.setItems(order.getItems());
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        subtotal.setText(formatter.format(order.getSubtotal()));
+        tax.setText(formatter.format(order.getTaxTotal()));
+        total.setText(formatter.format(order.getTotal()));
+        cart.refresh();
+        orderButton.setDisable(true);
+        removeButton.setDisable(true);
+        showMessage("Order has been successfully placed");
     }
 
     /**
@@ -72,6 +86,9 @@ public class CheckoutController {
         if(order.getItems().isEmpty()){
             removeButton.setDisable(true);
         }
+        if(order.getSubtotal() == 0){
+            orderButton.setDisable(true);
+        }
     }
 
     /**
@@ -87,4 +104,16 @@ public class CheckoutController {
         alert.showAndWait();
     }
 
+    /**
+     * Helper method to aid in creating a message box
+     *
+     * @param message text to be said within the message box
+     */
+    private void showMessage(String message){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText(message);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.showAndWait();
+    }
 }

@@ -35,6 +35,11 @@ public class MainMenuController implements Initializable {
         orderList = new StoreOrders();
     }
 
+    /**
+     * Opens the menu to see what items are in the cart currently
+     *
+     * @param event
+     */
     @FXML
     void openCartMenu(ActionEvent event) {
         try {
@@ -53,6 +58,11 @@ public class MainMenuController implements Initializable {
         }
     }
 
+    /**
+     * Opens the menu to enable the user to add coffee to the cart
+     *
+     * @param event
+     */
     @FXML
     void openCoffeeMenu(ActionEvent event) {
         try {
@@ -94,9 +104,43 @@ public class MainMenuController implements Initializable {
         }
     }
 
+    /**
+     * Opens the menu to see orders that were made
+     *
+     * @param event
+     */
     @FXML
     void openPastOrderMenu(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("StoreOrders.fxml"));
+            Parent root = loader.load();
+            DatabaseController databaseController = loader.getController();
+            databaseController.setMainMenuController(this);
+            Stage databaseWindow = new Stage();
+            databaseWindow.setTitle("Store Order Menu");
+            databaseWindow.setScene(new Scene(root));
+            databaseWindow.initModality(Modality.APPLICATION_MODAL);
+            databaseWindow.show();
+        }
+        catch(IOException e){
+            return;
+        }
+    }
 
+    /**
+     * Creates a new order
+     */
+    public void createOrder(){
+        order = new Order();
+    }
+
+    /**
+     * Adds order to the order list
+     *
+     * @param order order to be placed
+     */
+    public void placeOrder(Order order){
+        orderList.add(order);
     }
 
     /**
@@ -126,5 +170,14 @@ public class MainMenuController implements Initializable {
      */
     public Order getOrder() {
         return order;
+    }
+
+    /**
+     * Getter method for the store orders
+     *
+     * @return order list
+     */
+    public StoreOrders getOrderList() {
+        return orderList;
     }
 }

@@ -29,6 +29,16 @@ public class Order implements Customizable {
         this.total = 0;
         this.orderNumber = orderNumberTracker;
         orderNumberTracker++;
+        System.out.println(orderNumber);
+    }
+
+    /**
+     * Setter method for the subtotal of items
+     *
+     * @param subtotal
+     */
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
     }
 
     /**
@@ -161,5 +171,15 @@ public class Order implements Customizable {
             }
         }
         return -1;
+    }
+
+    /**
+     * Represents each order in a String form based off of the order numbers
+     *
+     * @return
+     */
+    @Override
+    public String toString(){
+        return Integer.toString(orderNumber);
     }
 }

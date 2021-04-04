@@ -19,6 +19,15 @@ public class StoreOrders implements Customizable{
     }
 
     /**
+     * Getter method for order list
+     *
+     * @return order list
+     */
+    public ObservableList<Order> getStoreOrders() {
+        return ordersList;
+    }
+
+    /**
      * Adds an order to a the list of orders
      *
      * @param obj order to be added to the list
