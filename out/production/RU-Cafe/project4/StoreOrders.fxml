@@ -21,6 +21,6 @@
       <Text layoutX="172.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order Number" />
       <ComboBox fx:id="orderNumber" layoutX="260.0" layoutY="12.0" onAction="#changeOrder" prefHeight="26.0" prefWidth="43.0" />
       <Text layoutX="346.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
-      <TextField fx:id="total" layoutX="379.0" layoutY="12.0" prefHeight="26.0" prefWidth="90.0" />
+      <TextField fx:id="total" editable="false" layoutX="379.0" layoutY="12.0" prefHeight="26.0" prefWidth="90.0" />
    </children>
 </AnchorPane>

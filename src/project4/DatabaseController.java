@@ -53,7 +53,7 @@ public class DatabaseController {
                 cancelOrderButton.setDisable(false);
             }
         } catch (NullPointerException e) {
-            showAlert("Database is currently empty!");
+            return;
         }
     }
 
@@ -118,19 +118,6 @@ public class DatabaseController {
     private void showMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
-        alert.setContentText(message);
-        alert.initModality(Modality.APPLICATION_MODAL);
-        alert.showAndWait();
-    }
-
-    /**
-     * Helper method to aid in creating an error box
-     *
-     * @param message text to be said within the error box
-     */
-    private void showAlert(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Warning");
         alert.setContentText(message);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.showAndWait();
