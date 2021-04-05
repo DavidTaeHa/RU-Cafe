@@ -38,6 +38,7 @@ public class DonutController implements Initializable {
     final static int YEAST_DONUT = 1;
     final static int CAKE_DONUT = 2;
     final static int DONUT_HOLE = 3;
+    final static int MAX_DONUT = 100;
 
     /**
      * This method runs when instance of the donut order menu is opened
@@ -90,6 +91,9 @@ public class DonutController implements Initializable {
             if(number < MIN_DONUT){
                 throw new NumberFormatException("Error");
             }
+            if(number > MAX_DONUT){
+                throw new Exception("E");
+            }
             Donut donut = null;
             switch(donutType.getValue()){
                 case "Yeast":
@@ -105,7 +109,9 @@ public class DonutController implements Initializable {
                             DONUT_HOLE);
                     break;
             }
-            order.add(donut);
+            if(!order.add(donut)){
+                throw new Exception("error");
+            }
             orderList.refresh();
             subtotal.clear();
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
@@ -116,6 +122,9 @@ public class DonutController implements Initializable {
         }
         catch(NumberFormatException e){
             showAlert("Input must be a whole number!");
+        }
+        catch(Exception e){
+            showAlert("Max order limit for each donut flavor is 100!");
         }
     }
 
@@ -153,12 +162,15 @@ public class DonutController implements Initializable {
         switch(donut){
             case "Yeast":
                 donutFlavor.setItems(order.getYeastList());
+                donutFlavor.getSelectionModel().selectFirst();
                 break;
             case "Cake":
                 donutFlavor.setItems(order.getCakeList());
+                donutFlavor.getSelectionModel().selectFirst();
                 break;
             case "Hole":
                 donutFlavor.setItems(order.getHoleList());
+                donutFlavor.getSelectionModel().selectFirst();
                 break;
         }
     }

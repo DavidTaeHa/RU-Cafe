@@ -90,6 +90,11 @@ public class CoffeeController implements Initializable {
         showMessage("Coffee has been added to the cart.");
         coffee = new Coffee(quantity.getValue().intValue(), temp.getSize());
         coffee.calculateItemPrice();
+        cream.setSelected(false);
+        syrup.setSelected(false);
+        milk.setSelected(false);
+        caramel.setSelected(false);
+        whipped.setSelected(false);
     }
 
     /**

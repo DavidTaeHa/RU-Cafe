@@ -15,6 +15,8 @@ public class DonutOrder implements Customizable{
     private ObservableList<Donut> donutOrder;
     private double donutSubtotal;
 
+    final static int MAX_DONUT = 100;
+
     /**
      * Constructor for the DonutOrder class
      */
@@ -104,9 +106,12 @@ public class DonutOrder implements Customizable{
             }
             else if (hasItem((Donut) obj)){
                 Donut temp = donutOrder.get(getItem((Donut) obj));
+                if(((Donut) obj).getQuantity() + temp.getQuantity() > MAX_DONUT){
+                    return false;
+                }
                 temp.setQuantity(((Donut) obj).getQuantity() + temp.getQuantity());
                 ((Donut) obj).calculateItemPrice();
-                ((Donut) temp).calculateItemPrice();
+                (temp).calculateItemPrice();
                 donutSubtotal = donutSubtotal + ((Donut) obj).getItemPrice();
             }
             return true;
