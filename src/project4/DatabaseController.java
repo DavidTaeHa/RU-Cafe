@@ -37,13 +37,24 @@ public class DatabaseController {
      * @param controller main controller
      */
     public void setMainMenuController(MainMenuController controller) {
-        this.controller = controller;
-        orderList = controller.getOrderList();
-        orderNumber.setItems(controller.getOrderList().getStoreOrders());
-        orderNumber.getSelectionModel().selectFirst();
-        order.setItems(orderNumber.getValue().getItems());
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        total.setText(formatter.format(orderNumber.getValue().getTotal()));
+        try {
+            this.controller = controller;
+            orderList = controller.getOrderList();
+            orderNumber.setItems(controller.getOrderList().getStoreOrders());
+            orderNumber.getSelectionModel().selectFirst();
+            order.setItems(orderNumber.getValue().getItems());
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            total.setText(formatter.format(orderNumber.getValue().getTotal()));
+            if (orderList.getStoreOrders().isEmpty()) {
+                exportButton.setDisable(true);
+                cancelOrderButton.setDisable(true);
+            } else {
+                exportButton.setDisable(false);
+                cancelOrderButton.setDisable(false);
+            }
+        } catch (NullPointerException e) {
+            showAlert("Database is currently empty!");
+        }
     }
 
     /**
@@ -54,15 +65,21 @@ public class DatabaseController {
     @FXML
     void cancelOrder(ActionEvent event) {
         orderList.remove(orderNumber.getValue());
-        if(!orderList.getStoreOrders().isEmpty()) {
+        if (!orderList.getStoreOrders().isEmpty()) {
             orderNumber.getSelectionModel().selectFirst();
             order.setItems(orderNumber.getValue().getItems());
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             total.setText(formatter.format(orderNumber.getValue().getTotal()));
-        }
-        else {
+        } else {
             order.getItems().clear();
             total.clear();
+        }
+        if (orderList.getStoreOrders().isEmpty()) {
+            exportButton.setDisable(true);
+            cancelOrderButton.setDisable(true);
+        } else {
+            exportButton.setDisable(false);
+            cancelOrderButton.setDisable(false);
         }
         order.refresh();
         showMessage("Order has been canceled");
@@ -75,7 +92,7 @@ public class DatabaseController {
      */
     @FXML
     void changeOrder(ActionEvent event) {
-        if(orderNumber.getValue() != null) {
+        if (orderNumber.getValue() != null) {
             order.setItems(orderNumber.getValue().getItems());
             NumberFormat formatter = NumberFormat.getCurrencyInstance();
             total.setText(formatter.format(orderNumber.getValue().getTotal()));
@@ -98,9 +115,22 @@ public class DatabaseController {
      *
      * @param message text to be said within the error box
      */
-    private void showMessage(String message){
+    private void showMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
+        alert.setContentText(message);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.showAndWait();
+    }
+
+    /**
+     * Helper method to aid in creating an error box
+     *
+     * @param message text to be said within the error box
+     */
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Warning");
         alert.setContentText(message);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.showAndWait();
