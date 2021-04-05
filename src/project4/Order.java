@@ -29,7 +29,6 @@ public class Order implements Customizable {
         this.total = 0;
         this.orderNumber = orderNumberTracker;
         orderNumberTracker++;
-        System.out.println(orderNumber);
     }
 
     /**

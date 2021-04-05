@@ -117,7 +117,7 @@ public class MainMenuController implements Initializable {
             DatabaseController databaseController = loader.getController();
             databaseController.setMainMenuController(this);
             Stage databaseWindow = new Stage();
-            databaseWindow.setTitle("Store Order Menu");
+            databaseWindow.setTitle("Store Orders");
             databaseWindow.setScene(new Scene(root));
             databaseWindow.initModality(Modality.APPLICATION_MODAL);
             databaseWindow.show();
