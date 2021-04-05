@@ -2,6 +2,11 @@ package project4;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 /**
  * This class represents a StoreOrder container that will contain instances of various orders made
  * by the customers
@@ -53,5 +58,23 @@ public class StoreOrders implements Customizable{
             ordersList.remove(obj);
         }
         return false;
+    }
+
+    /**
+     * Exports and writes orders within the database to a text file
+     *
+     * @throws IOException
+     */
+    public void exportDatabase() throws IOException {
+        File file = new File("export.txt");
+        PrintWriter writer = new PrintWriter(new FileWriter(file));
+        for(Order order : ordersList){
+            writer.println("Order " + order.getOrderNumber() + ":");
+            for(MenuItem item : order.getItems()){
+                writer.println(item);
+            }
+            writer.println("------------------------------------------");
+        }
+        writer.close();
     }
 }

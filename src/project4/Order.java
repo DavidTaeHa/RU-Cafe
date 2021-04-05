@@ -32,12 +32,12 @@ public class Order implements Customizable {
     }
 
     /**
-     * Setter method for the subtotal of items
+     * Getter method for order number
      *
-     * @param subtotal
+     * @return order number
      */
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public int getOrderNumber() {
+        return orderNumber;
     }
 
     /**

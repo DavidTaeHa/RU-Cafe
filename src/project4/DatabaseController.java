@@ -2,11 +2,10 @@ package project4;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
 
+import java.io.IOException;
 import java.text.NumberFormat;
 
 /**
@@ -66,6 +65,7 @@ public class DatabaseController {
             total.clear();
         }
         order.refresh();
+        showMessage("Order has been canceled");
     }
 
     /**
@@ -88,8 +88,22 @@ public class DatabaseController {
      * @param event
      */
     @FXML
-    void exportOrders(ActionEvent event) {
+    void exportOrders(ActionEvent event) throws IOException {
+        orderList.exportDatabase();
+        showMessage("Orders successfully exported.");
+    }
 
+    /**
+     * Helper method to aid in creating a message box
+     *
+     * @param message text to be said within the error box
+     */
+    private void showMessage(String message){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText(message);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.showAndWait();
     }
 
 }
