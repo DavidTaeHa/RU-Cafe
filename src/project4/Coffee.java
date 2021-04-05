@@ -24,6 +24,12 @@ public class Coffee extends MenuItem implements Customizable {
     final static double VENTI_PRICE = 3.49;
     final static double ADDIN_PRICE = 0.20;
 
+    /**
+     * Constructor for the coffee class
+     *
+     * @param quantity Number of coffee
+     * @param size Size of the coffee
+     */
     public Coffee(int quantity, int size) {
         super("Coffee", quantity);
         this.size = size;

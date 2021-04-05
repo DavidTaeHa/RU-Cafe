@@ -23,6 +23,8 @@ public class MainMenuController implements Initializable {
     private Order order;
     private StoreOrders orderList;
 
+    final static int INVALID = -1;
+
     /**
      * This method runs when instance of the donut order menu is opened
      *
@@ -54,7 +56,7 @@ public class MainMenuController implements Initializable {
             cartWindow.show();
         }
         catch(IOException e){
-            return;
+            System.exit(INVALID);
         }
     }
 
@@ -77,7 +79,7 @@ public class MainMenuController implements Initializable {
             coffeeWindow.show();
         }
         catch(IOException e){
-            return;
+            System.exit(INVALID);
         }
     }
 
@@ -100,7 +102,7 @@ public class MainMenuController implements Initializable {
             donutWindow.show();
         }
         catch(IOException e){
-            return;
+            System.exit(INVALID);
         }
     }
 
@@ -123,7 +125,7 @@ public class MainMenuController implements Initializable {
             databaseWindow.show();
         }
         catch(IOException e){
-            return;
+            System.exit(INVALID);
         }
     }
 

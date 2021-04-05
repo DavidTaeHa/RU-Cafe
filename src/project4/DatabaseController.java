@@ -57,7 +57,7 @@ public class DatabaseController {
                 cancelOrderButton.setDisable(false);
             }
         } catch (NullPointerException e) {
-            return;
+            showAlert("The database currently has no store orders.");
         }
     }
 
@@ -122,6 +122,19 @@ public class DatabaseController {
     private void showMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
+        alert.setContentText(message);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.showAndWait();
+    }
+
+    /**
+     * Helper method to aid in creating an warning box
+     *
+     * @param message text to be said within the error box
+     */
+    private void showAlert(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Error");
         alert.setContentText(message);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.showAndWait();

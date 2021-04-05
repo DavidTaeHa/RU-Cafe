@@ -49,6 +49,11 @@ public class CheckoutController {
         }
     }
 
+    /**
+     * Adds the current order to the store order database
+     *
+     * @param event
+     */
     @FXML
     void placeOrder(ActionEvent event) {
         controller.placeOrder(order);

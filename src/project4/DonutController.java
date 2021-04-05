@@ -124,7 +124,8 @@ public class DonutController implements Initializable {
             showAlert("Input must be a whole number!");
         }
         catch(Exception e){
-            showAlert("Max order limit for each donut flavor is 100!");
+            showAlert("Max order limit for each donut flavor per donut order is 100!\n" +
+                    "If you want to add more donuts, please add another donut\norder to the cart.");
         }
     }
 
@@ -193,7 +194,7 @@ public class DonutController implements Initializable {
      */
     private void showAlert(String message){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Warning");
+        alert.setTitle("Error");
         alert.setContentText(message);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.showAndWait();

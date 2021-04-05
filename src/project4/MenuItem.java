@@ -14,6 +14,7 @@ public class MenuItem {
      * Constructor for MenuItem class
      *
      * @param name Name of the item
+     * @param quantity Number of an item
      */
     public MenuItem(String name, int quantity) {
         this.name = name;

@@ -20,7 +20,8 @@ public class Donut extends MenuItem {
     /**
      * Constructor for Donut class
      *
-     * @param name      name of the donut
+     * @param name name of the donut
+     * @param quantity number of a donut
      * @param donutType type of donut
      */
     public Donut(String name, int quantity, int donutType) {
@@ -31,7 +32,7 @@ public class Donut extends MenuItem {
     /**
      * Getter method for donut type
      *
-     * @return
+     * @return donut type
      */
     public int getDonutType() {
         return donutType;
