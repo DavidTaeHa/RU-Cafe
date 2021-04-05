@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RU-Cafe/project4/DatabaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RU-Cafe/project4/DatabaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RU-Cafe/project4/DonutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RU-Cafe/project4/DonutController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RU-Cafe/project4/MainMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RU-Cafe/project4/MainMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/CheckoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/Coffee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/Coffee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/Donut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/Donut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/DonutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/DonutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project4/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project4/MenuItem.java" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -274,7 +261,7 @@
       <workItem from="1617582110408" duration="87000" />
       <workItem from="1617603857614" duration="913000" />
       <workItem from="1617654701382" duration="1188000" />
-      <workItem from="1617655987113" duration="33000" />
+      <workItem from="1617655987113" duration="339000" />
     </task>
     <servers />
   </component>
